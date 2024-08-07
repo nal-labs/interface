@@ -9,6 +9,7 @@ import {
   CELO_LOGO,
   ETHEREUM_LOGO,
   MUMBAI_LOGO,
+  NAL_LOGO,
   OPTIMISM_LOGO,
   POLYGON_LOGO,
   ZKSYNC_LOGO,
@@ -32,6 +33,7 @@ import {
   USDC_CELO,
   USDC_GOERLI,
   USDC_MAINNET,
+  USDC_NAL_SEPOLIA,
   USDC_OPTIMISM,
   USDC_OPTIMISM_GOERLI,
   USDC_POLYGON,
@@ -73,6 +75,57 @@ import {
   zkSync,
   zora,
 } from 'wagmi/chains'
+
+import { defineChain } from 'viem'
+import { chainConfig } from 'viem/op-stack'
+const sourceId = 11155111
+const nalSepoliaDef = /*#__PURE__*/ defineChain({
+  ...chainConfig,
+  id: 328527624,
+  name: 'NAL Sepolia',
+  nativeCurrency: { name: 'Sepolia Ether', symbol: 'ETH', decimals: 18 },
+  rpcUrls: {
+    default: {
+      http: ["https://testnet-rpc.nal.network"],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: 'Blockscout',
+      url: 'https://testnet-scan.nal.network/',
+      apiUrl: 'https://testnet-scan.nal.network/api',
+    },
+  },
+  contracts: {
+    ...chainConfig.contracts,
+    disputeGameFactory: {
+      [sourceId]: {
+        address: '0xfB8c0915ad20ad38D16ce904651639dcc4073062',
+      },
+    },
+    l2OutputOracle: {
+      [sourceId]: {
+        address: '0x31584aA9bBDcF32938a47B46579859C6a5a1FeF4',
+      },
+    },
+    multicall3: {
+      address: '0xca11bde05977b3631167028862be2a173976ca11',
+      blockCreated: 0,
+    },
+    portal: {
+      [sourceId]: {
+        address: '0x24C83C822EADCC5C4A432aB00A030E338d3713a2',
+      },
+    },
+    l1StandardBridge: {
+      [sourceId]: {
+        address: '0xf76fEd96b34F80BdefDAC20c3163834703B2d536',
+      },
+    },
+  },
+  testnet: true,
+  sourceId,
+})
 
 /** Address that represents native currencies on ETH, Arbitrum, etc. */
 export const DEFAULT_NATIVE_ADDRESS = '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
@@ -551,6 +604,61 @@ export const UNIVERSE_CHAIN_INFO: Record<UniverseChainId, UniverseChainInfo> = {
       address: '0x4200000000000000000000000000000000000006',
     },
   } as const satisfies UniverseChainInfo,
+  [UniverseChainId.NalSepolia]: {
+    ...nalSepoliaDef,
+    id: UniverseChainId.NalSepolia,
+    sdkId: UniswapSDKChainId.NAL_SEPOLIA,
+    assetRepoNetworkName: "nal_sepolia",
+    backendChain: {
+      chain: BackendChainId.NalSepolia as InterfaceGqlChain,
+      isSecondaryChain: true,
+      backendSupported: true,
+      nativeTokenBackendAddress: undefined,
+    },
+    blockPerMainnetEpochForChainId: 1,
+    blockWaitMsBeforeWarning: 1500000,
+    bridge: 'https://testnet-bridge.nal.network/',
+    chainPriority: 2,
+    docs: 'https://optimism.io/',
+    elementName: ElementName.ChainNalSepolia,
+    explorer: {
+      name: 'Nal Blockscout',
+      url: 'https://testnet-scan.nal.network/',
+      apiURL: 'https://testnet-scan.nal.network/api',
+    },
+    helpCenterUrl: 'https://help.uniswap.org/en/collections/3137778-uniswap-on-optimistic-ethereum-oξ',
+    infoLink: 'https://app.uniswap.org/explore/tokens/optimism',
+    infuraPrefix: 'optimism-goerli',
+    interfaceName: 'nal_sepolia',
+    label: 'Nal Sepolia',
+    logo: NAL_LOGO,
+    nativeCurrency: {
+      name: 'Nal Sepolia ETH',
+      symbol: 'sepoliaETH',
+      decimals: 18,
+      address: DEFAULT_NATIVE_ADDRESS,
+      explorerLink: '',
+    },
+    networkLayer: NetworkLayer.L2,
+    pendingTransactionsRetryOptions: DEFAULT_RETRY_OPTIONS,
+    rpcUrls: {
+      default: { http: ['https://testnet-rpc.nal.network'] },
+      appOnly: { http: ['https://testnet-rpc.nal.network'] },
+    },
+    spotPriceStablecoinAmount: CurrencyAmount.fromRawAmount(USDC_NAL_SEPOLIA, 10_000e6),
+    stablecoins: [USDC_NAL_SEPOLIA],
+    statusPage: 'https://testnet-scan.nal.network/stats',
+    supportsClientSideRouting: true,
+    supportsGasEstimates: true,
+    urlParam: 'nal_sepolia',
+    wrappedNativeCurrency: {
+      name: 'Wrapped Ether',
+      symbol: 'WETH',
+      decimals: 18,
+      address: '0x4200000000000000000000000000000000000006',
+    },
+  } as const satisfies UniverseChainInfo,
+
   [UniverseChainId.Bnb]: {
     ...bsc,
     sdkId: UniswapSDKChainId.BNB,

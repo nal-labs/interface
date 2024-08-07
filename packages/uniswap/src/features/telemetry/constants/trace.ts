@@ -98,6 +98,7 @@ export const ElementName = {
   ChainSepolia: 'chain-sepolia',
   ChainOptimism: 'chain-optimism',
   ChainOptimismGoerli: 'chain-optimism-goerli',
+  ChainNalSepolia: 'chain-nal-sepolia',
   ChainArbitrum: 'chain-arbitrum',
   ChainArbitrumGoerli: 'chain-arbitrum-goerli',
   ChainPolygon: 'chain-polygon',

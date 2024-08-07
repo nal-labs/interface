@@ -22,15 +22,19 @@ function useFeatureFlaggedChainIds(): Partial<Record<SupportedInterfaceChainId, 
   // Example: [ChainId.BLAST]: useFeatureFlag(FeatureFlags.BLAST)
 
   const zoraEnabled = useFeatureFlag(FeatureFlags.Zora)
+  // const nalEnabled = useFeatureFlag(FeatureFlags.Nal)
   return useMemo(
     () => ({
       [UniverseChainId.Zora]: zoraEnabled,
+      // [UniverseChainId.NalSepolia]: nalEnabled,
     }),
     [zoraEnabled],
+    // [zoraEnabled, nalEnabled],
   )
 }
 
 export function useIsSupportedChainId(chainId?: number | InterfaceChainId): chainId is SupportedInterfaceChainId {
+  // console.log(chainId)
   const featureFlaggedChains = useFeatureFlaggedChainIds()
 
   const chainIsNotEnabled = featureFlaggedChains[chainId as SupportedInterfaceChainId] === false
@@ -134,9 +138,10 @@ export const CHAIN_NAME_TO_CHAIN_ID = Object.fromEntries(
 ) as { [chain in InterfaceGqlChain]: SupportedInterfaceChainId }
 
 export const ALL_CHAIN_IDS: UniverseChainId[] = Object.values(UNIVERSE_CHAIN_INFO).map((chain) => chain.id)
-
+console.log(UNIVERSE_CHAIN_INFO)
 export const SUPPORTED_GAS_ESTIMATE_CHAIN_IDS = Object.keys(UNIVERSE_CHAIN_INFO)
-  .filter((key) => UNIVERSE_CHAIN_INFO[parseInt(key) as SupportedInterfaceChainId].supportsGasEstimates)
+  .filter((key) => {console.log(key)
+    UNIVERSE_CHAIN_INFO[parseInt(key) as SupportedInterfaceChainId].supportsGasEstimates})
   .map((key) => parseInt(key) as SupportedInterfaceChainId)
 
 export const PRODUCTION_CHAIN_IDS: UniverseChainId[] = Object.values(UNIVERSE_CHAIN_INFO)

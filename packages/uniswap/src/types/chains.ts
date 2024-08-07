@@ -12,6 +12,7 @@ export enum UniverseChainId {
   Sepolia = UniswapSDKChainId.SEPOLIA,
   Optimism = UniswapSDKChainId.OPTIMISM,
   OptimismGoerli = UniswapSDKChainId.OPTIMISM_GOERLI,
+  NalSepolia = UniswapSDKChainId.NAL_SEPOLIA,
   ArbitrumOne = UniswapSDKChainId.ARBITRUM_ONE,
   ArbitrumGoerli = UniswapSDKChainId.ARBITRUM_GOERLI,
   Polygon = UniswapSDKChainId.POLYGON,
@@ -34,6 +35,7 @@ export type WalletChainId =
   | UniverseChainId.Base
   | UniverseChainId.Celo
   | UniverseChainId.Optimism
+  | UniverseChainId.NalSepolia
   | UniverseChainId.Polygon
   | UniverseChainId.PolygonMumbai
   | UniverseChainId.Blast
@@ -48,6 +50,7 @@ export const WALLET_SUPPORTED_CHAIN_IDS: WalletChainId[] = [
   UniverseChainId.Polygon,
   UniverseChainId.ArbitrumOne,
   UniverseChainId.Optimism,
+  UniverseChainId.NalSepolia,
   UniverseChainId.Base,
   UniverseChainId.Bnb,
   UniverseChainId.Blast,
@@ -65,6 +68,7 @@ export const WEB_SUPPORTED_CHAIN_IDS: InterfaceChainId[] = [
   UniverseChainId.Sepolia,
   UniverseChainId.Optimism,
   UniverseChainId.OptimismGoerli,
+  UniverseChainId.NalSepolia,
   UniverseChainId.ArbitrumOne,
   UniverseChainId.ArbitrumGoerli,
   UniverseChainId.Polygon,

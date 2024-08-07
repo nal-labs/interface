@@ -26,6 +26,20 @@ export const USDC_OPTIMISM_GOERLI = new Token(
   'USDC',
   'USD//C',
 )
+export const USDC_NAL_SEPOLIA = new Token(
+  UniverseChainId.NalSepolia,
+  '0xe3b1a545130163ff977e06bcbae9bc55ec7ddaf6',
+  6,
+  'USDC',
+  'USD//C',
+)
+export const USDT_NAL_SEPOLIA = new Token(
+  UniverseChainId.NalSepolia,
+  '0xe4f926348d533d2b20857bd4d96ba92a4ceb9c15',
+  6,
+  'USDT',
+  'TetherUSD',
+)
 export const USDC_ARBITRUM = new Token(
   UniverseChainId.ArbitrumOne,
   '0xaf88d065e77c8cC2239327C5EDb3A432268e5831',
@@ -363,6 +377,13 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } =
   ),
   [UniverseChainId.OptimismGoerli]: new Token(
     UniverseChainId.OptimismGoerli,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WETH',
+    'Wrapped Ether',
+  ),
+  [UniverseChainId.NalSepolia]: new Token(
+    UniverseChainId.NalSepolia,
     '0x4200000000000000000000000000000000000006',
     18,
     'WETH',

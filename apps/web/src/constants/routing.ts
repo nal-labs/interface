@@ -26,6 +26,8 @@ import {
   USDC_MAINNET,
   USDC_OPTIMISM,
   USDC_OPTIMISM_GOERLI,
+  USDC_NAL_SEPOLIA,
+  USDT_NAL_SEPOLIA,
   USDC_POLYGON,
   USDC_POLYGON_MUMBAI,
   USDT,
@@ -124,6 +126,13 @@ export const COMMON_BASES: ChainCurrencyList = {
   [UniverseChainId.OptimismGoerli]: [nativeOnChain(UniverseChainId.OptimismGoerli), USDC_OPTIMISM_GOERLI].map(
     buildCurrencyInfo,
   ),
+
+  [UniverseChainId.NalSepolia]: [
+    nativeOnChain(UniverseChainId.NalSepolia),
+    USDC_NAL_SEPOLIA,
+    USDT_NAL_SEPOLIA,
+    WETH9[UniverseChainId.Optimism],
+  ].map(buildCurrencyInfo),
 
   [UniverseChainId.Base]: [
     nativeOnChain(UniverseChainId.Base),

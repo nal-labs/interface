@@ -1,5 +1,6 @@
 export const ETHEREUM_LOGO = require('./logos/png/ethereum-logo.png')
 export const OPTIMISM_LOGO = require('./logos/png/optimism-logo.png')
+export const NAL_LOGO = require('./logos/png/nal-logo.png')
 export const ARBITRUM_LOGO = require('./logos/png/arbitrum-logo.png')
 export const BASE_LOGO = require('./logos/png/base-logo.png')
 export const BNB_LOGO = require('./logos/png/bnb-logo.png')

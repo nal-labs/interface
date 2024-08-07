@@ -61,6 +61,21 @@ export const USDC_OPTIMISM_GOERLI = new Token(
   'USD//C',
 )
 
+export const USDC_NAL_SEPOLIA = new Token(
+  UniverseChainId.NalSepolia,
+  '0xe3b1a545130163ff977e06bcbae9bc55ec7ddaf6',
+  6,
+  'USDC',
+  'USD//C',
+)
+export const USDT_NAL_SEPOLIA = new Token(
+  UniverseChainId.NalSepolia,
+  '0xe4f926348d533d2b20857bd4d96ba92a4ceb9c15',
+  6,
+  'USDT',
+  'TetherUSD',
+)
+
 export const USDC_BASE = new Token(
   UniverseChainId.Base,
   '0x833589fcd6edb6e08f4c7c32d4f71b54bda02913',

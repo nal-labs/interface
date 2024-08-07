@@ -17,6 +17,7 @@ const BLOCK_EXPLORER_PREFIXES: { [chainId: number]: string } = {
   [UniverseChainId.Base]: 'https://basescan.org',
   [UniverseChainId.Blast]: 'https://blastscan.io',
   [UniverseChainId.Zora]: 'https://zora.superscan.network',
+  [UniverseChainId.NalSepolia]: 'https://testnet-scan.nal.network',
   [UniverseChainId.Zksync]: 'https://explorer.zksync.io',
 }
 

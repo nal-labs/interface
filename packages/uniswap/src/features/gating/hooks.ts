@@ -11,7 +11,9 @@ import {
 
 export function useFeatureFlag(flag: FeatureFlags): boolean {
   const name = getFeatureFlagName(flag)
+  // console.log(name)
   const { value } = useGate(name)
+  // console.log(value)
   return value
 }
 

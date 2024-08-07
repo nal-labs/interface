@@ -9,6 +9,7 @@ import {
   BNB_LOGO,
   CELO_LOGO,
   ETHEREUM_LOGO,
+  NAL_LOGO,
   OPTIMISM_LOGO,
   POLYGON_LOGO,
   ZKSYNC_LOGO,
@@ -49,6 +50,12 @@ export function getChainUI(chainId: InterfaceChainId, darkMode: boolean): ChainU
         symbol: OPTIMISM_LOGO,
         bgColor: '#FF042033',
         textColor: '#FF0420',
+      }
+    case UniverseChainId.NalSepolia:
+      return {
+        symbol: NAL_LOGO,
+        bgColor: '',
+        textColor: '',
       }
     case UniverseChainId.Celo:
     case UniverseChainId.CeloAlfajores:
