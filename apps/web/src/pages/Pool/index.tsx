@@ -208,12 +208,17 @@ export default function Pool() {
     [[], []],
   ) ?? [[], []]
 
+  console.log("userHideClosedPositions", userHideClosedPositions)
+  console.log("openPositions", openPositions)
   const userSelectedPositionSet = useMemo(
     () => [...openPositions, ...(userHideClosedPositions ? [] : closedPositions)],
     [closedPositions, openPositions, userHideClosedPositions],
   )
+  console.log("userSelectedPositionSet", userSelectedPositionSet)
 
   const filteredPositions = useFilterPossiblyMaliciousPositions(userSelectedPositionSet)
+  console.log("filteredPositions", filteredPositions)
+  console.log("isSupportedChain", isSupportedChain)
 
   if (!isSupportedChain) {
     return <WrongNetworkCard />

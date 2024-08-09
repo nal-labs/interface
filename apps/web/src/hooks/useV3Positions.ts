@@ -13,6 +13,7 @@ function useV3PositionsFromTokenIds(tokenIds: BigNumber[] | undefined): UseV3Pos
   const positionManager = useV3NFTPositionManagerContract()
   const inputs = useMemo(() => (tokenIds ? tokenIds.map((tokenId) => [BigNumber.from(tokenId)]) : []), [tokenIds])
   const results = useSingleContractMultipleData(positionManager, 'positions', inputs)
+  console.log("apps/web/src/hooks/useV3Positions.ts-useV3PositionsFromTokenIds", results)
 
   const loading = useMemo(() => results.some(({ loading }) => loading), [results])
   const error = useMemo(() => results.some(({ error }) => error), [results])
@@ -42,6 +43,7 @@ function useV3PositionsFromTokenIds(tokenIds: BigNumber[] | undefined): UseV3Pos
     return undefined
   }, [loading, error, results, tokenIds])
 
+  console.log("apps/web/src/hooks/useV3Positions.ts", positions)
   return {
     loading,
     positions: positions?.map((position, i) => ({ ...position, tokenId: inputs[i][0] })),

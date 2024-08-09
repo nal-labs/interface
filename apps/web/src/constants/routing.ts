@@ -131,7 +131,7 @@ export const COMMON_BASES: ChainCurrencyList = {
     nativeOnChain(UniverseChainId.NalSepolia),
     USDC_NAL_SEPOLIA,
     USDT_NAL_SEPOLIA,
-    WETH9[UniverseChainId.Optimism],
+    WRAPPED_NATIVE_CURRENCY[UniverseChainId.NalSepolia] as Token,
   ].map(buildCurrencyInfo),
 
   [UniverseChainId.Base]: [
