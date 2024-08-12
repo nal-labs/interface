@@ -612,7 +612,7 @@ export const UNIVERSE_CHAIN_INFO: Record<UniverseChainId, UniverseChainInfo> = {
     backendChain: {
       chain: BackendChainId.NalSepolia as InterfaceGqlChain,
       isSecondaryChain: true,
-      backendSupported: true,
+      backendSupported: false,
       nativeTokenBackendAddress: undefined,
     },
     blockPerMainnetEpochForChainId: 1,

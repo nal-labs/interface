@@ -10,7 +10,7 @@ import { useDebouncedTrade } from 'hooks/useDebouncedTrade'
 import useParsedQueryString from 'hooks/useParsedQueryString'
 import { useSwapTaxes } from 'hooks/useSwapTaxes'
 import { useTokenBalances } from 'hooks/useTokenBalances'
-import { useUSDPrice } from 'hooks/useUSDPrice'
+import { useUSDPrice, useETHPrice } from 'hooks/useUSDPrice'
 import { Trans } from 'i18n'
 import useNativeCurrency from 'lib/hooks/useNativeCurrency'
 import tryParseCurrencyAmount from 'lib/utils/tryParseCurrencyAmount'
@@ -170,6 +170,7 @@ export function useDerivedSwapInfo(state: SwapState): SwapInfo {
     [inputCurrency, isExactIn, outputCurrency, typedValue],
   )
 
+  // console.log("3333333333333333")
   const trade: {
     state: TradeState
     trade?: InterfaceTrade
@@ -182,7 +183,8 @@ export function useDerivedSwapInfo(state: SwapState): SwapInfo {
     account.address,
   )
 
-  const { data: nativeCurrencyBalanceUSD } = useUSDPrice(balance, nativeCurrency)
+  // const { data: nativeCurrencyBalanceUSD } = useUSDPrice(balance, nativeCurrency)
+  const { data: nativeCurrencyBalanceUSD } = useETHPrice(balance?.currency)
 
   const { data: outputFeeFiatValue } = useUSDPrice(
     isSubmittableTrade(trade.trade) && trade.trade.swapFee

@@ -81,6 +81,7 @@ export function SwapForm({ disableTokenInputs = false, onCurrencyChange }: SwapF
   const { initialChainId, chainId, prefilledState, currencyState, multichainUXEnabled } = useSwapAndLimitContext()
   const supportedChainId = useSupportedChainId(chainId)
   const { swapState, setSwapState, derivedSwapInfo } = useSwapContext()
+  // console.log("apps/web/src/pages/Swap/SwapForm.tsx-derivedSwapInfo", derivedSwapInfo)
   const { typedValue, independentField } = swapState
 
   // token warning stuff

@@ -23,7 +23,7 @@ function getEthAmountOut(chainId: SupportedInterfaceChainId): CurrencyAmount<Cur
   return CurrencyAmount.fromRawAmount(nativeOnChain(chainId), chainId === UniverseChainId.Mainnet ? 50e18 : 10e18)
 }
 
-function useETHPrice(currency?: Currency): {
+export function useETHPrice(currency?: Currency): {
   data?: Price<Currency, Currency>
   isLoading: boolean
 } {
