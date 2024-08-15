@@ -229,7 +229,6 @@ export default function FeatureFlagModal() {
           <FeatureFlagOption flag={FeatureFlags.ForAggregatorWeb} label="Enable FOR aggregator web" />
           <FeatureFlagGroup name="New Chains">
             <FeatureFlagOption flag={FeatureFlags.Zora} label="Enable Zora" />
-            {/* <FeatureFlagOption flag={FeatureFlags.Nal} label="Enable Nal" /> */}
           </FeatureFlagGroup>
           <FeatureFlagOption flag={FeatureFlags.L2NFTs} label="L2 NFTs" />
           <FeatureFlagGroup name="Multichain UX">

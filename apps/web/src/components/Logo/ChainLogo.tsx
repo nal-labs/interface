@@ -51,6 +51,7 @@ export function getChainUI(chainId: InterfaceChainId, darkMode: boolean): ChainU
         bgColor: '#FF042033',
         textColor: '#FF0420',
       }
+    case UniverseChainId.Nal:
     case UniverseChainId.NalSepolia:
       return {
         symbol: NAL_LOGO,

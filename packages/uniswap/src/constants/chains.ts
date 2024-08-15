@@ -33,9 +33,10 @@ import {
   USDC_CELO,
   USDC_GOERLI,
   USDC_MAINNET,
-  USDC_NAL_SEPOLIA,
   USDC_OPTIMISM,
   USDC_OPTIMISM_GOERLI,
+  USDC_NAL,
+  USDC_NAL_SEPOLIA,
   USDC_POLYGON,
   USDC_POLYGON_MUMBAI,
   USDC_SEPOLIA,
@@ -78,6 +79,55 @@ import {
 
 import { defineChain } from 'viem'
 import { chainConfig } from 'viem/op-stack'
+
+const sourceIdMain = 1 // mainnet
+export const nalMainnet = /*#__PURE__*/ defineChain({
+  ...chainConfig,
+  id: 328527,
+  name: 'NAL Mainnet',
+  nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+  rpcUrls: {
+    default: {
+      http: ["https://rpc.nal.network"],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: 'Blockscout',
+      url: 'https://scan.nal.network/',
+      apiUrl: 'https://scan.nal.network/api',
+    },
+  },
+  contracts: {
+    ...chainConfig.contracts,
+    disputeGameFactory: {
+      [sourceIdMain]: {
+        address: '0x0CE5684754c44822B2351617eC561d2aB89bc781',
+      },
+    },
+    l2OutputOracle: {
+      [sourceIdMain]: {
+        address: '0xaE25ea4Cc185585Fa6abf344F3354bf8207Cd7D1',
+      },
+    },
+    multicall3: {
+      address: '0xca11bde05977b3631167028862be2a173976ca11',
+      blockCreated: 0,
+    },
+    portal: {
+      [sourceIdMain]: {
+        address: '0x872902b91fB2aa95147fCDc346a567B7970DBe47',
+      },
+    },
+    l1StandardBridge: {
+      [sourceIdMain]: {
+        address: '0x8a471dF117E2fEA79DACE93cF5f6dd4217931Db7',
+      },
+    },
+  },
+  sourceIdMain,
+})
+
 const sourceId = 11155111
 const nalSepoliaDef = /*#__PURE__*/ defineChain({
   ...chainConfig,
@@ -604,6 +654,62 @@ export const UNIVERSE_CHAIN_INFO: Record<UniverseChainId, UniverseChainInfo> = {
       address: '0x4200000000000000000000000000000000000006',
     },
   } as const satisfies UniverseChainInfo,
+
+  [UniverseChainId.Nal]: {
+    ...nalMainnet,
+    id: UniverseChainId.Nal,
+    sdkId: UniswapSDKChainId.NAL,
+    assetRepoNetworkName: "nal",
+    backendChain: {
+      chain: BackendChainId.Nal as InterfaceGqlChain,
+      isSecondaryChain: false,
+      backendSupported: false,
+      nativeTokenBackendAddress: undefined,
+    },
+    blockPerMainnetEpochForChainId: 6,
+    blockWaitMsBeforeWarning: isInterface ? 1500000 : 1200000,
+    bridge: 'https://bridge.nal.network/',
+    chainPriority: 2,
+    docs: 'https://www.nal.network/',
+    elementName: ElementName.ChainNal,
+    explorer: {
+      name: 'Nal Blockscout',
+      url: 'https://scan.nal.network/',
+      apiURL: 'https://scan.nal.network/api',
+    },
+    helpCenterUrl: 'https://help.uniswap.org/en/collections/3137778-uniswap-on-optimistic-ethereum-oξ',
+    infoLink: 'https://app.uniswap.org/explore/tokens/nal',
+    infuraPrefix: 'nal-mainnet',
+    interfaceName: 'nal',
+    label: 'Nal',
+    logo: NAL_LOGO,
+    nativeCurrency: {
+      name: 'Nal ETH',
+      symbol: 'ETH',
+      decimals: 18,
+      address: DEFAULT_NATIVE_ADDRESS,
+      explorerLink: '',
+    },
+    networkLayer: NetworkLayer.L2,
+    pendingTransactionsRetryOptions: DEFAULT_RETRY_OPTIONS,
+    rpcUrls: {
+      default: { http: ['https://rpc.nal.network'] },
+      appOnly: { http: ['https://rpc.nal.network'] },
+    },
+    spotPriceStablecoinAmount: CurrencyAmount.fromRawAmount(USDC_NAL, 10_000e6),
+    stablecoins: [USDC_NAL],
+    statusPage: 'https://scan.nal.network/stats',
+    supportsClientSideRouting: true,
+    supportsGasEstimates: true,
+    urlParam: 'nal',
+    wrappedNativeCurrency: {
+      name: 'Wrapped Ether',
+      symbol: 'WETH',
+      decimals: 18,
+      address: '0x4200000000000000000000000000000000000006',
+    },
+  } as const satisfies UniverseChainInfo,
+
   [UniverseChainId.NalSepolia]: {
     ...nalSepoliaDef,
     id: UniverseChainId.NalSepolia,
@@ -617,9 +723,9 @@ export const UNIVERSE_CHAIN_INFO: Record<UniverseChainId, UniverseChainInfo> = {
     },
     blockPerMainnetEpochForChainId: 1,
     blockWaitMsBeforeWarning: 1500000,
-    bridge: 'https://testnet-bridge.nal.network/',
+    bridge: 'https://bridge.nal.network/',
     chainPriority: 2,
-    docs: 'https://optimism.io/',
+    docs: 'https://www.nal.network/',
     elementName: ElementName.ChainNalSepolia,
     explorer: {
       name: 'Nal Blockscout',
@@ -627,8 +733,8 @@ export const UNIVERSE_CHAIN_INFO: Record<UniverseChainId, UniverseChainInfo> = {
       apiURL: 'https://testnet-scan.nal.network/api',
     },
     helpCenterUrl: 'https://help.uniswap.org/en/collections/3137778-uniswap-on-optimistic-ethereum-oξ',
-    infoLink: 'https://app.uniswap.org/explore/tokens/optimism',
-    infuraPrefix: 'optimism-goerli',
+    infoLink: 'https://app.uniswap.org/explore/tokens/nal',
+    infuraPrefix: 'nal-sepolia',
     interfaceName: 'nal_sepolia',
     label: 'Nal Sepolia',
     logo: NAL_LOGO,

@@ -55,7 +55,6 @@ export enum FeatureFlags {
   UniswapXv2,
   V2Everywhere,
   Zora,
-  // Nal,
   // TODO(WEB-3625): Remove these once we have a generalized system for outage banners.
   OutageBannerArbitrum,
   OutageBannerOptimism,
@@ -84,7 +83,6 @@ export const WEB_FEATURE_FLAG_NAMES = new Map<FeatureFlags, string>([
   [FeatureFlags.UniswapXv2, 'uniswapx_v2'],
   [FeatureFlags.V2Everywhere, 'v2_everywhere'],
   [FeatureFlags.Zora, 'zora'],
-  // [FeatureFlags.Nal, 'nal_sepolia'],
   [FeatureFlags.ForAggregatorWeb, 'for_aggregator_web'],
   // TODO(WEB-3625): Remove these once we have a generalized system for outage banners.
   [FeatureFlags.OutageBannerArbitrum, 'outage_banner_feb_2024_arbitrum'],

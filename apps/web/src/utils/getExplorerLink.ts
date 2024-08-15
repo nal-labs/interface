@@ -8,6 +8,8 @@ const BLOCK_EXPLORER_PREFIXES: { [chainId: number]: string } = {
   [UniverseChainId.ArbitrumGoerli]: 'https://goerli.arbiscan.io',
   [UniverseChainId.Optimism]: 'https://optimistic.etherscan.io',
   [UniverseChainId.OptimismGoerli]: 'https://goerli-optimism.etherscan.io',
+  [UniverseChainId.Nal]: 'https://scan.nal.network',
+  [UniverseChainId.NalSepolia]: 'https://testnet-scan.nal.network',
   [UniverseChainId.Polygon]: 'https://polygonscan.com',
   [UniverseChainId.PolygonMumbai]: 'https://mumbai.polygonscan.com',
   [UniverseChainId.Celo]: 'https://celoscan.io',
@@ -17,7 +19,6 @@ const BLOCK_EXPLORER_PREFIXES: { [chainId: number]: string } = {
   [UniverseChainId.Base]: 'https://basescan.org',
   [UniverseChainId.Blast]: 'https://blastscan.io',
   [UniverseChainId.Zora]: 'https://zora.superscan.network',
-  [UniverseChainId.NalSepolia]: 'https://testnet-scan.nal.network',
   [UniverseChainId.Zksync]: 'https://explorer.zksync.io',
 }
 

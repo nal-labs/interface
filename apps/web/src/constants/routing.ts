@@ -26,8 +26,8 @@ import {
   USDC_MAINNET,
   USDC_OPTIMISM,
   USDC_OPTIMISM_GOERLI,
+  USDC_NAL,
   USDC_NAL_SEPOLIA,
-  USDT_NAL_SEPOLIA,
   USDC_POLYGON,
   USDC_POLYGON_MUMBAI,
   USDT,
@@ -35,6 +35,8 @@ import {
   USDT_AVALANCHE,
   USDT_BSC,
   USDT_OPTIMISM,
+  USDT_NAL,
+  USDT_NAL_SEPOLIA,
   USDT_POLYGON,
   WBTC,
   WBTC_ARBITRUM_ONE,
@@ -126,6 +128,13 @@ export const COMMON_BASES: ChainCurrencyList = {
   [UniverseChainId.OptimismGoerli]: [nativeOnChain(UniverseChainId.OptimismGoerli), USDC_OPTIMISM_GOERLI].map(
     buildCurrencyInfo,
   ),
+
+  [UniverseChainId.Nal]: [
+    nativeOnChain(UniverseChainId.Nal),
+    USDC_NAL,
+    USDT_NAL,
+    WRAPPED_NATIVE_CURRENCY[UniverseChainId.Nal] as Token,
+  ].map(buildCurrencyInfo),
 
   [UniverseChainId.NalSepolia]: [
     nativeOnChain(UniverseChainId.NalSepolia),
